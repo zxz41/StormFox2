@@ -594,7 +594,7 @@ Generate meshes and env-points out from the map-data.
 					window.h = h
 					table.insert(glass_dynamic, window)
 				end
-			elseif c:sub(0,14) == "func_breakable" or c == "func_brush" then -- Brushes
+			elseif StormFox2.util.IsBrushModel(ent) then -- Brushes
 				if ent._sf2_validwin == false then continue end -- Already scanned this
 				if ent._sf2_validwin == true then
 					table.insert(glass_dynamic, ent._sf2_mwindow)

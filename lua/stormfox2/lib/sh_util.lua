@@ -25,6 +25,17 @@ function StormFox2.util.GetModelSize(sModel)
 	return hullMin,hullMax
 end
 
+---Return whetever or not a model is a valid brush.
+---@param ent entity
+---@return bool
+---@shared
+function StormFox2.util.IsBrushModel(ent)
+	if ent:GetBrushSurfaces() == nil then return false end
+
+	-- Must be a inline model.
+	return ( ent:GetModel() and ent:GetModel():sub(1,1) == "*" )
+end
+
 if CLIENT then
 	--[[-----------------------------------------------------------------
 	Calcview results
