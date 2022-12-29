@@ -296,7 +296,9 @@ Generate meshes and env-points out from the map-data.
 				if num >= n then
 					if n == 8192 then 			-- MATERIAL_VAR_NOCULL
 						nocull = true
-					elseif n == 2097152 or n == 4194304 then 	-- MATERIAL_VAR_TRANSLUCENT
+					elseif n == 128			-- MATERIAL_VAR_ADDITIVE
+					or n == 2097152			-- MATERIAL_VAR_NORMALMAPALPHAENVMAPMASK
+					or n == 4194304 then 	-- MATERIAL_VAR_TRANSLUCENT
 						transparent = true
 					elseif n == 4 then 			-- MATERIAL_VAR_NO_DRAW 
 						return false
