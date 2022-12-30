@@ -342,6 +342,9 @@ Generate meshes and env-points out from the map-data.
 			nocull = b
 			return transparent
 		end
+		local function IsAlphaTransparent( ent )
+			return ent:GetRenderMode() > 0 and ent:GetColor().a < 255
+		end
 		local function fuzzeVectors(t,n)
 			local t2 = {}
 			for i,v in ipairs(t) do
@@ -606,7 +609,7 @@ Generate meshes and env-points out from the map-data.
 						ent._sf2_validwin = false
 						continue
 					elseif #surfs < 2 then -- Properly a nocull
-						if IsWindowMaterial(surfs[1]:GetMaterial()) and SurfaceInfo_FacingOutside(ent, surfs[1], true) then
+						if (IsWindowMaterial(surfs[1]:GetMaterial()) or IsAlphaTransparent(ent)) and SurfaceInfo_FacingOutside(ent, surfs[1], true) then
 							local window = CreateWindowRef(ent,surfs[1]:GetCenter())
 							window.mesh = surfs[1]:GetMesh()
 							ent._sf2_mwindow = window
@@ -620,7 +623,7 @@ Generate meshes and env-points out from the map-data.
 						local window
 						local t = {}
 						for _,surf in ipairs(surfs) do
-							if surf:GetMinSide() > 10 and IsWindowMaterial(surf:GetMaterial()) and SurfaceInfo_FacingOutside(ent, surf) then
+							if surf:GetMinSide() > 10 and (IsWindowMaterial(surf:GetMaterial()) or IsAlphaTransparent(ent)) and SurfaceInfo_FacingOutside(ent, surf) then
 								if not window then
 									window = CreateWindowRef(ent,surf:GetCenter())
 								end
