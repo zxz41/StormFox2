@@ -26,7 +26,7 @@ function StormFox2.util.GetModelSize(sModel)
 end
 
 ---Return whetever or not a model is a valid brush.
----@param ent entity
+---@param ent Entity
 ---@return bool
 ---@shared
 function StormFox2.util.IsBrushModel(ent)
