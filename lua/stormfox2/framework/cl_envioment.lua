@@ -51,9 +51,8 @@ local function IsWinModel(sModel)
 	return mdl[sModel] and true
 end
 
--- CS:GO and l4d2 seems to be the only one with window-props
-if IsMounted("csgo") or IsMounted("l4d2") then
-	StormFox2.Environment.AddWindowModel("models/props/cs_militia/militiawindow02_breakable.mdl")
+-- List of games with window props. This list is incomplete.
+if IsMounted("csgo") or IsMounted("l4d2") or IsMounted("cstrike") then
 	StormFox2.Environment.AddWindowModel("models/props/cs_militia/wndw01.mdl")
 	StormFox2.Environment.AddWindowModel("models/props_windows/window_farmhouse_big.mdl")
 	StormFox2.Environment.AddWindowModel("models/props_windows/window_farmhouse_small.mdl",Vector(-26,-0.8,-31.8),Vector(26,-0.8,34))
