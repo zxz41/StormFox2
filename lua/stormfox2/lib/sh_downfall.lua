@@ -248,11 +248,12 @@ do
 	---@shared
 	local function FindSky(vFrom, vNormal, nTries)
 		local last,lastFakeSky
+		local skyVisibilityMask = mask - CONTENTS_WINDOW
 		for i = 1,nTries do
 			local t = util.TraceLine( {
 				start = vFrom,
 				endpos = vFrom + vNormal * 262144,
-				mask = MASK_SOLID_BRUSHONLY
+				mask = skyVisibilityMask 
 			} )
 			if not t.Hit then break end -- Just empty void from this point on
 			-- Check if we're in the void
