@@ -119,7 +119,7 @@ if SERVER then
 				end
 			end
 		end
-		return line, tr
+		return THUNDER_TRACE_ERROR, line, tr
 	end
 
 	-- Creates a lightniingstrike up ( Useful when forcing a lightning strike to hit something )
