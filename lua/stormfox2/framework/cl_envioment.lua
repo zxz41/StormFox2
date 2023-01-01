@@ -526,7 +526,7 @@ Generate meshes and env-points out from the map-data.
 		function window_meta:IsAlive()
 			if not IsValid(self[1]) then return false end
 			return (self[1]:GetMaxHealth() == 1 and self[1]:Health() == 0) -- HACKHACK invulnerable...
-			or not (self[1]:GetMaxHealth() > 0 and self[1]:Health() <= 0) -- FIXME client's do not get a network update about health until forced (fullupdate)
+			or not (self[1]:GetMaxHealth() > 0 and self[1]:Health() <= 0) -- FIXME Certain actions do not update client about health until forced (fullupdate)
 		end
 		function window_meta:GetCenter()
 			if self.mesh then return self[1]:GetPos() + self[1]:OBBCenter() end
