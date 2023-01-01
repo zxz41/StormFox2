@@ -456,9 +456,9 @@ else
 		v:SetFloat("$nofog",1)
 	end
 	local t = 0
-	hook.Add("PostDrawOpaqueRenderables","StormFox2.Render.Lightning",function(a,sky)
+	hook.Add("PostDrawOpaqueRenderables","StormFox2.Render.Lightning",function(a,sky, sky3d)
 		if a or #lightningStrikes < 1 then return end
-		if sky then return end -- Doesn't work yet
+		if sky3d then return end -- Doesn't work yet
 		local r = {}
 		local c = CurTime()
 		local col = Color( 255, 255, 255, 255)
