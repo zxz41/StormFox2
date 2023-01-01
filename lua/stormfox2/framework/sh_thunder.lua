@@ -185,6 +185,9 @@ if SERVER then
 			if t_Var == THUNDER_MAKE_SKYBOX then
 				bInside = false
 			end
+			if t_Var == THUNDER_TRACE_ERROR then
+				b_InSkybox = true -- Most likely leaked outside the map.
+			end
 		end
 		if not bInside then -- Outside the map
 			tList = MakeStrikeUp( Vector(pos.x, pos.y, StormFox2.Map.MinSize().z) )
