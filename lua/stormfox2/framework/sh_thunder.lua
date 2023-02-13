@@ -76,7 +76,7 @@ if SERVER then
 	local BrushZ = math.max(1, ( StormFox2.Map.MaxSize().z - StormFox2.Map.MinSize().z ) / 20000)
 
 	local function MakeStrikeDown( vPos, nTraceSize )
-		if not nTraceSize then nTraceSize = 512 end
+		if not nTraceSize then nTraceSize = 64 end
 		-- Find the sky position at the area
 		local SkyPos = StormFox2.DownFall.FindSky( vPos, vector_up, 8 )
 		if not SkyPos then -- Unable to find sky above. Get the higest point
