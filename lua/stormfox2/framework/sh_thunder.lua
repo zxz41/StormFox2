@@ -24,8 +24,8 @@ if SERVER then
 		local t = util.TraceHull( {
 			start = pos,
 			endpos = pos2,
-			maxs = Vector(size,size,4),
-			mins = Vector(-size,-size,0),
+			maxs = Vector(size,size,2),
+			mins = Vector(-size,-size,-2),
 			mask = mask
 			} )
 		t.HitPos = t.HitPos or pos + pos2
