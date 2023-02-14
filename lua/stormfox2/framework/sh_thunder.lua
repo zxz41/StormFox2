@@ -166,28 +166,29 @@ if SERVER then
 		net.Broadcast()
 	end
 
-	---Creates a lightningstrike at a given position. Will return a hit entity as a second argument.
-	---@param pos Vector
+	---Creates a lightning strike from above at a given position. Will return a hit entity as a second argument.
+	---If nothing is passed to this function, it will create a lightning strike at a random point within the map.
+	---@param startPos Vector
 	---@return boolean success
 	---@return Entity 
 	---@server
-	function StormFox2.Thunder.CreateAt( pos )
+	function StormFox2.Thunder.CreateAt( startPos )
 		local t_Var, tList, tr
 		local b_InSkybox = false
 		local vMapMin = StormFox2.Map.MinSize()
 		local vMapMax = StormFox2.Map.MaxSize()
-		if not pos then
-			pos = Vector( math.Rand(vMapMin.x, vMapMax.x), math.Rand(vMapMin.y, vMapMax.y), math.Rand(vMapMax.z, vMapMin.z / 2) )
+		if not startPos then
+			startPos = Vector( math.Rand(vMapMin.x, vMapMax.x), math.Rand(vMapMin.y, vMapMax.y), math.Rand(vMapMax.z, vMapMin.z / 2) )
 		end
-		local bInside = pos.x >= vMapMin.x and pos.x <= vMapMax.x and vMapMin.y and pos.y <= vMapMax.y
+		local bInside = startPos.x >= vMapMin.x and startPos.x <= vMapMax.x and vMapMin.y and startPos.y <= vMapMax.y
 		if bInside then
-			t_Var, tList, tr = MakeStrikeDown( pos )
+			t_Var, tList, tr = MakeStrikeDown( startPos )
 			if t_Var == THUNDER_MAKE_SKYBOX then
 				bInside = false
 			end
 		end
 		if not bInside then -- Outside the map
-			tList = MakeStrikeUp( Vector(pos.x, pos.y, StormFox2.Map.MinSize().z) )
+			tList = MakeStrikeUp( Vector(startPos.x, startPos.y, StormFox2.Map.MinSize().z) )
 			b_InSkybox = true
 		end
 		if not tList then return false end -- Unable to create lightning strike here.
